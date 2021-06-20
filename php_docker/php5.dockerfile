@@ -10,13 +10,12 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd
 RUN apt-get update && apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN pecl install imagick \
-#    && docker-php-ext-install mysql \
     && docker-php-ext-install mysqli
 RUN apt-get update && apt-get install -y procps
 RUN docker-php-ext-enable imagick
 RUN docker-php-ext-install sockets
-# COPY zz_docker-56.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN chmod 644 /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN chown -R www-data:www-data /var/www/html
-#RUN ls -al /usr/local/etc/php/
+# choose environment and comment unused environment
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+# RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini

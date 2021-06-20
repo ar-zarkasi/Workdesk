@@ -23,6 +23,7 @@ services:
     restart: always
     ports:
       - 80:80
+      - 443:443
     volumes:
       - /f/docker/www:/usr/local/apache2/htdocs
       - /f/docker/apache_docker/conf:/usr/local/apache2/conf/external

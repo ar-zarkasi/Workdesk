@@ -8,11 +8,8 @@ RUN docker-php-ext-enable memcached
 RUN docker-php-ext-install mysqli
 RUN apt-get update && apt-get install -y procps
 RUN docker-php-ext-install sockets
-#RUN set -x \
-#    && deluser www-data
-# RUN adduser -u 500 -S -G www-data www-data
-# RUN adduser --system --group www-data
-# COPY zz_docker-74.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN chmod 644 /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN chown -R www-data:www-data /var/www/html
+# choose environment and comment unused environment
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+# RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini

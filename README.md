@@ -1,3 +1,20 @@
+<h3>Environment Development for PHP Programmer Using Docker</h3>
+
+<p><strong>-------</strong></p>
+<ul>
+    <li>httpd:alpine</li>
+    <li>mariadb:10.6.2</li>
+    <li>php:5.6-fpm</li>
+    <li>php:7.4-fpm</li>
+    <li>php:8.0 <strong>soon...</strong></li>
+</ul>
+<p> Enabled Extension on each php </p>
+<ol>
+    <li>memcached</li>
+    <li>imagick</li>
+</ol>
+<p><strong>-------</strong></p>
+
 1. for your apache config see file apache_docker/conf/default.conf and create your own conf
 2. for your config php-fpm see php_docker/zz_docker-{your version php}.conf and modify on your own
 3. place your project PHP in www folder

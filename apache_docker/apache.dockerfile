@@ -12,7 +12,6 @@ RUN sed -i \
     -e 's/^#\(LoadModule .*mod_xml2enc.*\)/\1/' \
     -e 's/^#\(LoadModule .*mod_watchdog.*\)/\1/' \
     conf/httpd.conf
-# RUN mkdir /usr/local/apache2/conf/external
 RUN echo "ServerName localhost" >> /usr/local/apache2/conf/httpd.conf
 RUN echo "Include /usr/local/apache2/conf/external/*.conf" >> /usr/local/apache2/conf/httpd.conf
 RUN chown -R www-data:www-data /usr/local/apache2/htdocs
