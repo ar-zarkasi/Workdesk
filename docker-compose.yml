@@ -1,0 +1,75 @@
+version: '3.1'
+services:
+  database:
+    container_name: database
+    build:
+      context: ./db_docker
+      dockerfile: mariadb.dockerfile
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Arfan123
+    ports:
+      - 3306:3306
+    volumes:
+      - /f/docker/db_docker/data:/var/lib/mysql
+      - phpsocket:/run
+    networks:
+      - backnet
+  apache:
+    container_name: apache_server
+    build:
+      context: ./apache_docker
+      dockerfile: apache.dockerfile
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - /f/docker/www:/usr/local/apache2/htdocs
+      - /f/docker/apache_docker/conf:/usr/local/apache2/conf/external
+      - /f/docker/apache_docker/conf/server.crt:/usr/local/apache2/conf/server.crt
+      - /f/docker/apache_docker/conf/server.key:/usr/local/apache2/conf/server.key
+      - /f/docker/apache_docker/conf/cacert.pem:/usr/local/apache2/conf/cacert.pem
+      - phpsocket:/run/php
+    links:
+      - php5.6
+      - php7.4
+    networks:
+      - backnet
+  php5.6:
+    container_name: php5.6
+    build:
+      context: ./php_docker
+      dockerfile: php5.dockerfile
+    ports:
+      - 9056:9056
+    volumes:
+      - phpsocket:/run/php
+      - /f/docker/www:/var/www/html
+      - /f/docker/php_docker/zz_docker-56.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+    networks:
+      - backnet
+    depends_on:
+      - database
+  php7.4:
+    container_name: php7.4
+    build:
+      context: ./php_docker
+      dockerfile: php74.dockerfile
+    ports:
+      - 9074:9074
+    volumes:
+      - phpsocket:/run/php
+      - /f/docker/www:/var/www/html
+      - /f/docker/php_docker/zz_docker-74.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+    networks:
+      - backnet
+    depends_on:
+      - database
+volumes:
+  phpsocket:
+networks: 
+  backnet:
+    driver: bridge
+
+  
+
