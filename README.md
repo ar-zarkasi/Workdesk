@@ -20,7 +20,8 @@
 3. place your project PHP in www folder
 4. when your using mysql in this docker container with your project, use "database" instead localhost or 127.0.0.1
 5. when your access in your host pc, access database with localhost/127.0.0.1 port 3306
-5. you can modify php.ini using docker exec -it (php5.6 or php7.4) /bin/bash , locate in /usr/local/etc/php/php.ini
+6. you can modify php.ini using docker exec -it (php5.6 or php7.4) /bin/bash , locate in /usr/local/etc/php/php.ini
+7. access via your browser "http://localhost" to see php 5.6 and "https://localhost" to see php 7.4
 
 
 ENJOY

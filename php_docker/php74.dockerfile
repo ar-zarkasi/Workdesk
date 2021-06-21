@@ -13,3 +13,4 @@ RUN chown -R www-data:www-data /var/www/html
 # choose environment and comment unused environment
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 # RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+RUN echo 'date.timezone = "Asia/Jakarta"' >> /usr/local/etc/php/php.ini

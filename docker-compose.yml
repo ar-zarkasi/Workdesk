@@ -45,7 +45,7 @@ services:
       - 9056:9056
     volumes:
       - phpsocket:/run/php
-      - /f/docker/www:/var/www/html
+      - /f/docker/www:/usr/local/apache2/htdocs
       - /f/docker/php_docker/zz_docker-56.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
     networks:
       - backnet
@@ -60,7 +60,7 @@ services:
       - 9074:9074
     volumes:
       - phpsocket:/run/php
-      - /f/docker/www:/var/www/html
+      - /f/docker/www:/usr/local/apache2/htdocs
       - /f/docker/php_docker/zz_docker-74.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
     networks:
       - backnet
