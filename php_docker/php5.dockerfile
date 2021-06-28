@@ -17,6 +17,6 @@ RUN docker-php-ext-install sockets
 RUN chmod 644 /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN chown -R www-data:www-data /var/www/html
 # choose environment and comment unused environment
-RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+# RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 # RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 RUN echo 'date.timezone = "Asia/Jakarta"' >> /usr/local/etc/php/php.ini

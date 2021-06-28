@@ -7,7 +7,7 @@ services:
       dockerfile: mariadb.dockerfile
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Arfan123
+      MYSQL_ROOT_PASSWORD: "Arfan123"
     ports:
       - 3306:3306
     volumes:
@@ -46,7 +46,8 @@ services:
     volumes:
       - phpsocket:/run/php
       - /f/docker/www:/usr/local/apache2/htdocs
-      - /f/docker/php_docker/zz_docker-56.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - /f/docker/php_docker/config/zz_docker-56.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - /f/docker/php_docker/config/php5.6.ini:/usr/local/etc/php/php.ini
     networks:
       - backnet
     depends_on:
@@ -61,7 +62,8 @@ services:
     volumes:
       - phpsocket:/run/php
       - /f/docker/www:/usr/local/apache2/htdocs
-      - /f/docker/php_docker/zz_docker-74.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - /f/docker/php_docker/config/zz_docker-74.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - /f/docker/php_docker/config/php7.4.ini:/usr/local/etc/php/php.ini
     networks:
       - backnet
     depends_on:
@@ -71,6 +73,3 @@ volumes:
 networks: 
   backnet:
     driver: bridge
-
-  
-
